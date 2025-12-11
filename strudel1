@@ -1,0 +1,19 @@
+samples({
+  bassdrum: 'DS_T2_drum_kick_level.wav',
+  hihat: 'hihat_closed.wav',
+  snaredrum: 'acoustic_snare.wav',
+  clap: 'clap_tech_house.wav',
+  synth_sample: 'DS_T2_128_synth_lead_comeback_D#min.wav',
+  echo: 'OS_FLS_120_D#m_Interlocked_Echo_Synth.wav',
+}, 'https://raw.githubusercontent.com/heatherwang0211/heater-strudel/main/')
+
+$: s("bassdrum*4").gain(0.7)  
+$: s("snaredrum(3,8)").gain(0.3)   
+$: s("hihat*8").gain(0.4)   
+$: s("clap*4").gain(0.5)
+//$: s("synth_sample").slow(8).gain(0.7)
+$: s("echo").slow(8).gain(2)
+$: note("<[eb3 gb3 bb3 eb4]*2 [cb2 eb3 gb3 cb4]*2 [db3 f3 ab3 db4]*2 [gb3 bb3 db4 gb4]*2>")
+   .sound("sawtooth").gain("[.5 2]*4").lpf(600) 
+$: note("<[eb3 gb4 bb4]*4 [ab3 cb4 eb4]*4 [db3 f4 ab4]*4 [gb3 bb4 db4]*4>")
+   .sound("square").gain("[.5 2]*4").lpf(600) 
